@@ -39,24 +39,26 @@
 #         self.account_balance = 0
 
 class User:		# here's what we have so far
-    def __init__(self, name, email):
+    def __init__(self, name):
         self.name = name
-        self.email = email
         self.account_balance = 0
     
     # adding the deposit method
     def make_deposit(self, amount):	# takes an argument that is the amount of the deposit
-    	self.account_balance += amount	# the specific user's account increases by the amount of the value received
+        self.account_balance += amount	# the specific user's account increases by the amount of the value received
+        return self
 
     #make_withdrawal(self, amount) - have this method decrease the user's balance by the amount specified
     def make_withdrawal(self, amount):
         self.account_balance -= amount
-    
+        return self
+
     #display_user_balance(self) - have this method print the user's name and account balance to the terminal
     # eg. "User: Guido van Rossum, Balance: $150
     def display_user_balance(self):
         #This calls the user and the account balance from the __init__ method
         print(f"User: {self.name}, Balance: ${self.account_balance}")
+        return self
 
     def transfer_money(self,amount,user):
         #have the first user transfer money to the third user and then print both users' balances
@@ -68,9 +70,9 @@ class User:		# here's what we have so far
         user.display_user_balance()
 
 # Create 3 instances of the User class
-michael = User("Mike","michael@gmail.com")
-anna = User("Anna","anna@gmail.com")
-nick = User("Nick","nick@gmail.com")
+michael = User("Mike")
+anna = User("Anna")
+nick = User("Nick")
 
 # Have the first user make 3 deposits and 1 withdrawal and then display their balance
 michael.make_deposit(100)
@@ -97,3 +99,6 @@ nick.display_user_balance()
 # have the first user transfer money to the third user and then print both users' balances
 
 michael.transfer_money(200,nick)
+
+#chaining methods
+michael.make_deposit(100).make_deposit(300).make_deposit(200).make_withdrawal(200).display_user_balance()
