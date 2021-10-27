@@ -1,11 +1,12 @@
 class BankAccount:
     # Create a BankAccount class with the attributes interest rate and balance
-    bank_attributes = []
+    accounts = []
+
     def __init__(self, type):
         self.account_type = type
         self.account_balance = 0
         self.int_rate = 0.01
-        print(BankAccount.bank_attributes(self))
+        BankAccount.accounts.append(self)
 
     # Add a deposit method to the BankAccount class    
     def deposit(self, amount):
@@ -41,9 +42,9 @@ class BankAccount:
 
 # NINJA BONUS: use a classmethod to print all instances of a Bank Account's info
     @classmethod
-    def acct_info(cls):
-        for account in cls.acct_info
-        cls.bank_attributes = info
+    def print_all_accounts(cls):
+        for account in cls.accounts:
+            account.display_account_info()
 
 # Create 2 accounts
 savings = BankAccount("savings")
@@ -57,3 +58,5 @@ savings.deposit(200).deposit(100).deposit(200).withdraw(200).yield_interest().di
 # then yield interest and display the account's info all 
 # in one line of code (i.e. chaining)
 checking.deposit(1000).deposit(130).withdraw(200).withdraw(200).withdraw(200).withdraw(200).yield_interest().display_account_info()
+
+BankAccount.print_all_accounts()
