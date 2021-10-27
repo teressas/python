@@ -2,9 +2,10 @@ class BankAccount:
     # Create a BankAccount class with the attributes interest rate and balance
     accounts = []
 
-    def __init__(self, int_rate, account_balance):
-        self.int_rate = int_rate
+    def __init__(self, account_balance, int_rate):
+        self.account_type = type
         self.account_balance = account_balance
+        self.int_rate = int_rate
         BankAccount.accounts.append(self)
 
     # Add a deposit method to the BankAccount class    
@@ -28,14 +29,15 @@ class BankAccount:
     # Add a display_account_info method to the BankAccount class
     def display_account_info(self):
         #print to the console: eg. "Balance: $100"
-        return f"{self.account_balance}"
+        print(f"Balance: ${self.account_balance}")
+        # return(f"{self.account_balance}")
 
     # Add a yield_interest method to the BankAccount class
     # increases the account balance by the current balance * the interest rate 
     # (as long as the balance is positive)
     def yield_interest(self):
         if self.account_balance > 0:
-            self.account_balance += self.account_balance * self.int_rate
+            self.account_balance += (self.account_balance * self.int_rate)
         return self
 
 # NINJA BONUS: use a classmethod to print all instances of a Bank Account's info
@@ -44,20 +46,34 @@ class BankAccount:
         for account in cls.accounts:
             account.display_account_info()
 
+# user class
 class User:		# here's what we have so far
     def __init__(self, name):
         self.name = name
-        self.account = {
-            "checking" : BankAccount(.02, 1000),
-            "savings" : BankAccount(.05, 3000)
+        # self.account_balance = 0
+        self.accounts = {
+            "checking": BankAccount(1000, 0.02),
+            "savings": BankAccount(1000, 0.02)
         }
     
+        #self.accounts = BankAccount(1000,0.02)
+    
+    # adding the deposit method
+    def make_deposit(self, amount, type):	# takes an argument that is the amount of the deposit
+        self.accounts[type].deposit(amount)	# the specific user's account increases by the amount of the value received
+        return self
+
+    #make_withdrawal(self, amount) - have this method decrease the user's balance by the amount specified
+    def make_withdrawal(self, amount, type):
+        self.accounts[type].withdraw(amount)
+        return self
+
     #display_user_balance(self) - have this method print the user's name and account balance to the terminal
     # eg. "User: Guido van Rossum, Balance: $150
     def display_user_balance(self):
         #This calls the user and the account balance from the __init__ method
-        print(f"User: {self.name}, Balance: ${self.account['checking'].display_account_info()}")
-        print(f"User: {self.name}, Balance: ${self.account['savings'].display_account_info()}")
+        print(f"User: {self.name}, Checking Balance: {self.accounts['checking'].account_balance}")
+        print(f"User: {self.name}, Savings Balance: {self.accounts['savings'].account_balance}")
         return self
 
     def transfer_money(self,amount,user):
@@ -69,7 +85,7 @@ class User:		# here's what we have so far
         self.display_user_balance()
         user.display_user_balance()
 
-adrien = User("Adrien")
-
-adrien.account['checking'].deposit(100)
-adrien.display_user_balance()
+teressa = User("teressa")
+teressa.make_deposit(100,"checking")
+teressa.make_deposit(100,"savings")
+teressa.display_user_balance()
