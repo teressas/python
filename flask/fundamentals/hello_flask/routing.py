@@ -7,6 +7,11 @@ app = Flask(__name__)    # Create a new instance of the Flask class called "app"
 def hello_world():
     return "Hello World"
 
+# solutions:
+# @app.route('/')
+# def index():
+#     return 'Hello World!'
+
 #localhost:5000/dojo - have it say "Dojo!"
 @app.route('/dojo')
 def dojo():
@@ -28,14 +33,25 @@ def hello(name):
     # localhost:5000/repeat/99/dogs - have it say "dogs" 99 times
     # NINJA BONUS: For the 4th task, ensure the 2nd element in the URL is an integer, and the 3rd element is a string
 
-@app.route('/repeat/<int:num>/<str:name>')
+@app.route('/repeat/<int:num>/<string:name>')
 def repeat(num,name):
     repeat_string = int(num)* str(name)
     return(repeat_string)
 
-@app.route('/')
-def specified():
-    if app.route != app('/')
+# solutions
+# @app.route('/repeat/<int:num>/<string:word>')
+# def repeat_word(num, word):
+#     output = ''
+
+#     for i in range(0,num):
+#         output += f"<p>{word}</p>"
+
+#     return output
+
+
+# @app.route('/')
+# def specified():
+#     if app.route != app('/')
 
 if __name__=="__main__":   # Ensure this file is being run directly and not from a different module    
     app.run(debug=True)    # Run the app in debug mode.
