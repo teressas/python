@@ -1,0 +1,47 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header{
+    background-color: rebeccapurple;
+    color: peachpuff;
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
+    margin: 20px 0px;
+}
+
+.checkboard{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+}
+
+.row {
+    display: flex;
+    width: fit-content;
+    height: 40px;
+} 
+
+.oddsquares{
+    width: 40px;
+    height: 40px;
+}
+
+.evensquares{
+    width: 40px;
+    height: 40px;
+}

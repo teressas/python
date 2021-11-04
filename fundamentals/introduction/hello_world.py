@@ -19,4 +19,3 @@ print(fave_food1.isalnum())
 x = "Hello World"
 x.endswith("World")
 
-

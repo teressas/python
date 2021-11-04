@@ -2,7 +2,7 @@ class BankAccount:
     # Create a BankAccount class with the attributes interest rate and balance
     accounts = []
 
-    def __init__(self, type):
+    def __init__(self, account_balance, int_rate):
         self.account_type = type
         self.account_balance = 0
         self.int_rate = 0.01

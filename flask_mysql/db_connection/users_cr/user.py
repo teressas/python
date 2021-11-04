@@ -1,6 +1,7 @@
 # import the function that will return an instance of a connection
 from mysqlconnection import connectToMySQL
 
+database = 'users'
 # model the class after the user table from our database
 class User:
     def __init__( self , data ):
@@ -16,13 +17,14 @@ class User:
         query = "SELECT * FROM users;"
         # make sure to call the connectToMySQL function with the schema you are targeting.
         # connectToMySQL is class, ('users') is an instance of a class
-        results = connectToMySQL('users').query_db(query)
+        results = connectToMySQL(database).query_db(query)
         # Create an empty list to append our instances of users
         users = []
         # Iterate over the db results and create instances of users with cls.
         for user in results:
             users.append( cls(user) )
         return users
+
 
     # class method to save our user to the database
     @classmethod

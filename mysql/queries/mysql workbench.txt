@@ -1,0 +1,5 @@
+INSERT INTO `dojos_and_ninjas_schema`.`DOJOS` (`id`, `name`, `created_at`, `updated_at`) VALUES ('3', 'Nick', '2021-11-02', '2021-11-02');
+SELECT * FROM `dojos_and_ninjas_schema`.`DOJOS`;
+UPDATE `dojos_and_ninjas_schema`.`DOJOS` SET  updated_at = '2021-11-02' WHERE id = 3;
+DELETE FROM `dojos_and_ninjas_schema`.`DOJOS` WHERE id = 2
+
