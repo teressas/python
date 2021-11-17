@@ -2,7 +2,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 import re
-
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
 DATABASE = 'emails'
@@ -26,20 +25,6 @@ class Email:
         for email in results:
             emails.append( cls(email) )
         return emails
-    
-    @classmethod
-    def get_one(cls, data:dict):
-        query = "SELECT * FROM emails WHERE id=%(id)s;"
-        # LIST OF DICTIONARIES
-        results = connectToMySQL(DATABASE).query_db(query, data)
-        if not results:
-            return False
-        return cls(results[0])
-
-    @classmethod
-    def update_one(cls, data):
-        query = "UPDATE emails SET email=%(email)s WHERE id = %(id)s;"
-        return connectToMySQL(DATABASE).query_db(query,data)
 
     @classmethod
     def delete_one(cls,data):
@@ -47,10 +32,14 @@ class Email:
         return connectToMySQL(DATABASE).query_db(query,data)
         
     @staticmethod
-    def validate_email( email ):
+    def is_valid(email):
         is_valid = True
-        # test whether a field matches the pattern
-        if not EMAIL_REGEX.match(email['email']): 
-            flash("Invalid email address!")
-            is_valid = False
+        query = "SELECT * FROM email WHERE email = %(email)s;"
+        results = connectToMySQL(DATABASE).query_db(query,email)
+        if len(results) >= 1:
+            flash("Email already taken.")
+            is_valid=False
+        if not EMAIL_REGEX.match(email['email']):
+            flash("Invalid Email!!!")
+            is_valid=False
         return is_valid

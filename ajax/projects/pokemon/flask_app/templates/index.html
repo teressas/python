@@ -13,41 +13,31 @@
         <div class="row">
             <div class="col-sm-6">
                 <h1>Register</h1>
-                <form action="/user/create" method="post">
+                <form action="/create_user" method="post" id="reg-user-form">
                     <div class="mb-3">
                         <label class for="first_name">First Name</label>
                         <input class="form-control" type="text" name="first_name" id="first_name">
-                        {% for message in get_flashed_messages(category_filter='err_reg_first_name')%}
-                            <p class="alert-alert-danger">{{ message }}</p>
-                        {% endfor %}
+                        <span id="err_reg_first_name"></span>
                     </div>
                     <div class="mb-3">
                         <label for="last_name">Last Name</label>
                         <input class="form-control" type="text" name="last_name" id="last_name">
-                        {% for message in get_flashed_messages(category_filter='err_reg_last_name')%}
-                            <p class="alert-alert-danger">{{ message }}</p>
-                        {% endfor %}
+                        <span id="err_reg_last_name'"></span>
                     </div>
                     <div class="mb-3">
                         <label for="email">Email</label>
                         <input class="form-control" type="text" name="email" id="email">
-                        {% for message in get_flashed_messages(category_filter='err_reg_email')%}
-                            <p class="alert-alert-danger">{{ message }}</p>
-                        {% endfor %}
+                        <span id="err_reg_email"></span>
                     </div>
                     <div class="mb-3">
                         <label for="password">Password</label>
                         <input class="form-control" type="password" name="password" id="password">
-                        {% for message in get_flashed_messages(category_filter='err_reg_password')%}
-                            <p class="alert-alert-danger">{{ message }}</p>
-                        {% endfor %}
+                        <span id="err_reg_password"></span>
                     </div>
                     <div class="mb-3">
                         <label for="confirm">Confirm Password</label>
                         <input class="form-control" type="password" name="confirm_password" id="confirm_password">
-                        {% for message in get_flashed_messages(category_filter='err_reg_confirm_password')%}
-                            <p class="alert-alert-danger">{{ message }}</p>
-                        {% endfor %}
+                        <span id="err_reg_confirm_password"></span>
                     </div>
                     <button class="btn btn-success">Register New User</button>
                 </form>
@@ -56,20 +46,16 @@
         
             <div class="col-sm-6">
                 <h1>Login</h1>
-                <form action="/user/process_login" method="post">
+                <form action="/user/process_login" method="post" id="user-form">
                     <div class="mb-3">
                         <label for="email">Email</label>
                         <input class="form-control" type="text" name="email" id="email">
-                        {% for message in get_flashed_messages(category_filter='err_login_email')%}
-                            <p class="alert-alert-danger">{{ message }}</p>
-                        {% endfor %}
+                        <span id="err_login_email"></span>
                     </div>
                     <div class="mb-3">
                         <label for="password">Password</label>
                         <input class="form-control" type="password" name="password" id="password">
-                        {% for message in get_flashed_messages(category_filter='err_login_password')%}
-                            <p class="alert-alert-danger">{{ message }}</p>
-                        {% endfor %}
+                        <span id="err_login_password"></span>
                     </div>
                     <button class="btn btn-success">Login</button>
                 </form>

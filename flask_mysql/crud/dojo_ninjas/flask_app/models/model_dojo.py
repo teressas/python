@@ -32,15 +32,6 @@ class Dojo:
         query = "INSERT INTO dojos ( name , created_at, updated_at ) VALUES ( %(name)s , NOW() , NOW() );"
         # data is a dictionary that will be passed into the save method from server.py
         return connectToMySQL(DATABASE).query_db( query, data )
-    
-    # @classmethod
-    # def get_one(cls, data:dict):
-    #     query = "SELECT * FROM dojos WHERE id=%(id)s;"
-    #     # LIST OF DICTIONARIES
-    #     results = connectToMySQL(DATABASE).query_db(query, data)
-    #     if not results:
-    #         return False
-    #     return cls(results[0])
 
     @classmethod
     def get_one(cls, data:dict):

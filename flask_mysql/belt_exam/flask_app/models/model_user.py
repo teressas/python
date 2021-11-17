@@ -72,35 +72,6 @@ class User:
             return False
         return cls(results[0])
 
-    # get data from receipes table
-    # @classmethod
-    # def get_reportedby(cls,data:dict):
-    #     query = "SELECT * FROM users LEFT JOIN sightings ON  users.id = sightings.user_id WHERE users.id = %(id)s;"
-    #     results = connectToMySQL(DATABASE).query_db( query , data )
-        
-    #     if len(results) == 0:
-    #         return False
-
-    #     user = cls( results[0] )
-        
-    #     if results[0]["sightings.id"] != None:
-    #         for row_from_db in results:
-    #             sightingData = {
-    #                 "id" : row_from_db["sightings.id"],
-    #                 "location" : row_from_db["first_name"],
-    #                 "what_happened" : row_from_db["last_name"],
-    #                 "date_sighting" : row_from_db["email"],
-    #                 "num_of_sasquatche" : row_from_db["password"],
-    #                 "created_at" : row_from_db["sightings.created_at"],
-    #                 "updated_at" : row_from_db["sightings.updated_at"],
-    #                 "user_id" : row_from_db["user_id"]
-    #             }
-    #             print(sightingData)
-    #             user.sightings.append(model_sighting.Sightings( sightingData ) )
-
-    #     # cls()
-    #     return user
-
     # U
     @classmethod
     def update_one(cls, data):

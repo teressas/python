@@ -19,8 +19,8 @@ def dashboard():
         return redirect('/')
     context = {
         'user': model_user.User.get_one({'id':session['uuid']}),
-        'sightings' : model_sighting.Sightings.get_all()
-        # 'fullname' : model_sighting.Sightings.fullname({'id':session['uuid']})
+        # 'sightings' : model_sighting.Sightings.get_all(),
+        'fullname' : model_sighting.Sightings.fullname('sightings.users[0]')
     }
     print(context)
     return render_template('dashboard.html', **context)

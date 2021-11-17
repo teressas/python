@@ -42,6 +42,9 @@ class Sightings:
 
     # R
 
+    # def fullname(self):
+    #     return f"{self.first_name} {self.last_name}"
+
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM sightings;"

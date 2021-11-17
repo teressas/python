@@ -41,7 +41,8 @@ def edit_sighting(id):
         return redirect('/')
     context = {
         'user': model_user.User.get_one({'id':session['uuid']}),
-        'sighting': model_sighting.Sightings.get_one({'id':id})
+        'sighting': model_sighting.Sightings.get_one({'id':id}),
+        'fullname': model_sighting.Sightings.fullname()
     }
     return render_template('edit_sighting.html', **context)
 

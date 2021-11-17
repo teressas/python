@@ -24,9 +24,7 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        # self.sightings = []
         
-
     # Now we use class methods to query our database
 
     def fullname(self):
@@ -86,10 +84,10 @@ class User:
 
 #********VALIDATIONS******************
     @staticmethod
-    def validate_users(data):
+    def validate_reg_users(data):
         errors = {}
 
-        if len(data['first_name']) < 2:
+        if 'first_name' in data and len(data['first_name']) < 2:
             errors['err_reg_first_name'] = "First Name is required"
 
         if len(data['last_name']) < 2:
@@ -115,15 +113,17 @@ class User:
     def validate_users_login(data):
         errors = {}
     
-        if len(data['email']) < 1:
+        if 'email' in data and len(data['email']) < 1:
             errors['err_login_email'] = "Email is required"
         else:
             potential_user = User.get_email({'email':data['email']})
             if not potential_user:
                 errors['err_login_email'] = "Email is required"
 
-        if len(data['password']) < 8:
+        if 'password' in data and len(data['password']) < 8:
             errors['err_login_password'] = "Password is required"
 
         return errors
+
+
 

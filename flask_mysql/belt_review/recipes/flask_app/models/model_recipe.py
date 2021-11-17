@@ -12,7 +12,7 @@ class Recipe:
         self.id = data['id']
         self.name = data['name']
         self.description = data['description']
-        self.under_30_mins = data[int:'under_30_mins']
+        self.under_30_mins = data['under_30_mins']
         self.instructions = data['instructions']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']

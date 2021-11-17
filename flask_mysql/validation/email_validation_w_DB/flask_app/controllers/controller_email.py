@@ -10,12 +10,13 @@ from flask_app.models.model_email import Email
 def index():
     return render_template("index.html")
 
-@app.route('/process', methods=['POST'])
+@app.route('/process',methods=['POST'])
 def process():
-    if not Email.validate_email(request.form):
-        Email.create(request.form)
-        return redirect('/success')
-    return redirect('/')
+    if not Email.is_valid(request.form):
+        return redirect('/')
+    Email.create(request.form)
+    return redirect('/success')
+
     
 @app.route("/success")
 def success():

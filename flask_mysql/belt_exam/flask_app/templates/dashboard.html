@@ -23,7 +23,7 @@
                     <li>{{ one_sighting.location }}</li>
                     <li>{{ one_sighting.date_sighting }}</li>
                     <li>Reported By:</li>
-                    <li>{{ one_sighting.users[0].first_name }} {{ one_sighting.users[0].last_name }}</li>
+                    <li>{{ user_sighting.users[0].first_name }} {{ user_sighting.users[0].last_name }}</li>
                     <a href="/show/{{ one_sighting.id }}">view instructions</a>
                     {% if one_sighting.user_id == user.id %}
                     | <a href="/edit/{{ one_sighting.id }}">edit</a>
